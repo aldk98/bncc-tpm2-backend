@@ -46,5 +46,8 @@ Route::group(['middleware' => 'auth:api'], function() {
     //Detail Teacher
     Route::get('teacher/kelas/{id}', 'API\TeacherController@getTeacherKelas');
 
+    Route::resource('course','API\CourseController');
+    Route::resource('course_component','API\CourseComponentController');
+    Route::resource('grade','API\GradeController');
 });
 
