@@ -24,3 +24,27 @@ Route::group(['prefix' => 'auth'], function () {
         Route::get('user', 'API\AuthController@user');
     });
 });
+
+
+Route::group(['middleware' => 'auth:api'], function() {
+    //Kelas
+    Route::get('kelas', 'API\KelasController@getKelas');
+    Route::get('kelas/{id}', 'API\KelasController@showKelas');
+    Route::post('insert_kelas', 'API\KelasController@postKelas');
+    Route::patch('update_kelas/{id}', 'API\KelasController@updateKelas');
+    Route::delete('delete_kelas/{id}', 'API\KelasController@deleteKelas');
+
+    //Student
+    Route::get('student', 'API\StudentController@getAllStudent');
+    Route::get('student/create', 'API\StudentController@createStudent');
+    Route::patch('student/update/{id}', 'API\StudentController@updateStudent');
+    Route::delete('student/delete/{id}', 'API\StudentController@deleteStudent');
+
+    //DetailKelasStudent
+    Route::get('student/kelas/{id}', 'API\StudentController@getStudentKelas');
+
+    //Detail Teacher
+    Route::get('teacher/kelas/{id}', 'API\TeacherController@getTeacherKelas');
+
+});
+
