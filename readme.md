@@ -25,3 +25,8 @@ run :
 php artisan migrate
 php artisan key:generate
 ```
+try running php artisan route:list. if errors indicating oauth keys not existing then passport is not installed yet.
+if passport is not installed then :
+```
+php artisan passport:install
+```
