@@ -58,10 +58,9 @@ class AuthController extends Controller
             return response()->json([
                 'message' => 'Unauthorized'
             ], 401);
-        };
-
-        $tokenResult = Auth::user()->createToken('Access Token');
-
+        }
+        $user = Auth::user();
+        $tokenResult = $user->createToken('Access Token');
         $token = $tokenResult->token;
 
         if ($request->remember_me){
